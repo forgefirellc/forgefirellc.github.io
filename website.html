@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Forge Fire LLC</title>
+<!-- Use Tailwind CSS for a modern, responsive design -->
+<script src="https://www.google.com/search?q=https://cdn.tailwindcss.com"></script>
+<!-- Use Roboto Slab for a bold, industrial look -->
+<link rel="preconnect" href="https://www.google.com/search?q=https://fonts.googleapis.com">
+<link rel="preconnect" href="https://www.google.com/search?q=https://fonts.gstatic.com" crossorigin>
+<link href="https://www.google.com/search?q=https://fonts.googleapis.com/css2%3Ffamily%3DRoboto%2BSlab:wght%40400%3B500%3B700%26display%3Dswap" rel="stylesheet">
+<!-- Font Awesome for icons -->
+<link rel="stylesheet" href="https://www.google.com/search?q=https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<style>
+body {
+font-family: 'Roboto Slab', serif;
+background-color: #121212;
+color: #d1d5db;
+}
+
+    /* Custom styles for the metallic theme */
+    .card-metallic {
+        background-color: #262626;
+        border: 1px solid #3d3d3d;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.4);
+    }
+
+    .shadow-orange {
+        box-shadow: 0 0 10px rgba(255, 69, 0, 0.5);
+    }
+
+    .btn-industrial {
+        background-color: #ff4500;
+        color: #121212;
+        border: 2px solid #ff6347;
+        text-transform: uppercase;
+    }
+
+    .btn-industrial:hover {
+        background-color: #ff6347;
+        box-shadow: 0 0 15px rgba(255, 69, 0, 0.8);
+        transform: translateY(-2px);
+    }
+</style>
+
+</head>
+<body class="bg-gray-950 text-gray-300">
+
+<!-- Header & Navigation -->
+<header class="bg-[#1a1a1a] shadow-lg sticky top-0 z-50">
+    <nav class="container mx-auto flex justify-between items-center p-4">
+        <a href="#" class="text-2xl font-bold text-white tracking-wide">FORGE FIRE LLC</a>
+        <div class="space-x-4">
+            <a href="#services" class="hover:text-orange-500 transition-colors">Capabilities</a>
+            <a href="#portfolio" class="hover:text-orange-500 transition-colors">Projects</a>
+            <a href="#contact" class="hover:text-orange-500 transition-colors">Contact</a>
+        </div>
+    </nav>
+</header>
+
+<!-- Hero Section -->
+<section class="bg-[#121212] text-white text-center py-24 md:py-48">
+    <div class="container mx-auto">
+        <h1 class="text-4xl md:text-6xl font-extrabold mb-4 uppercase">Precision Metal Fabrication</h1>
+        <p class="text-lg md:text-xl max-w-2xl mx-auto mb-8 text-gray-400">
+            Innovating with steel, aluminum, and beyond. We build the future with fire and precision.
+        </p>
+        <a href="#contact" class="btn-industrial py-3 px-8 rounded-full font-bold transition-all duration-300">
+            Get a Quote
+        </a>
+    </div>
+</section>
+
+<!-- Services Section -->
+<section id="services" class="py-16 md:py-24 bg-[#1a1a1a]">
+    <div class="container mx-auto text-center">
+        <h2 class="text-3xl md:text-4xl font-bold mb-12 uppercase">Our Capabilities</h2>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 px-4">
+            <!-- Service Card 1: CNC Machining -->
+            <div class="card-metallic p-8 rounded-xl shadow-lg hover:shadow-orange transition-all duration-300">
+                <div class="text-4xl text-orange-500 mb-4">
+                    <i class="fa-solid fa-gear"></i>
+                </div>
+                <h3 class="text-xl font-semibold mb-2 text-white">CNC Machining</h3>
+                <p class="text-gray-400">
+                    High-precision cutting and shaping of metal for complex components.
+                </p>
+            </div>
+            <!-- Service Card 2: Welding & Assembly -->
+            <div class="card-metallic p-8 rounded-xl shadow-lg hover:shadow-orange transition-all duration-300">
+                <div class="text-4xl text-orange-500 mb-4">
+                    <i class="fa-solid fa-welding-rod"></i>
+                </div>
+                <h3 class="text-xl font-semibold mb-2 text-white">Welding & Assembly</h3>
+                <p class="text-gray-400">
+                    Expert joining of materials to build robust and reliable structures.
+                </p>
+            </div>
+            <!-- Service Card 3: Custom Design -->
+            <div class="card-metallic p-8 rounded-xl shadow-lg hover:shadow-orange transition-all duration-300">
+                <div class="text-4xl text-orange-500 mb-4">
+                    <i class="fa-solid fa-ruler-combined"></i>
+                </div>
+                <h3 class="text-xl font-semibold mb-2 text-white">Custom Design</h3>
+                <p class="text-gray-400">
+                    Bringing your vision to life with tailored design and engineering solutions.
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Portfolio Section -->
+<section id="portfolio" class="py-16 md:py-24">
+    <div class="container mx-auto text-center">
+        <h2 class="text-3xl md:text-4xl font-bold mb-12 uppercase">Our Work</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 px-4">
+            <!-- Portfolio Item 1 -->
+            <div class="rounded-xl overflow-hidden shadow-lg transform transition-transform duration-300 hover:scale-105 card-metallic">
+                <img src="https://placehold.co/600x400/1f2937/d1d5db?text=Project+Alpha" alt="Project Alpha" class="w-full h-48 object-cover">
+                <div class="p-6">
+                    <h3 class="font-semibold text-lg mb-1 text-white">Structural Beams</h3>
+                    <p class="text-gray-400 text-sm">Large-scale fabrication for commercial construction.</p>
+                </div>
+            </div>
+            <!-- Portfolio Item 2 -->
+            <div class="rounded-xl overflow-hidden shadow-lg transform transition-transform duration-300 hover:scale-105 card-metallic">
+                <img src="https://placehold.co/600x400/1f2937/d1d5db?text=Project+Beta" alt="Project Beta" class="w-full h-48 object-cover">
+                <div class="p-6">
+                    <h3 class="font-semibold text-lg mb-1 text-white">Custom Chassis</h3>
+                    <p class="text-gray-400 text-sm">Lightweight aluminum chassis for an automotive prototype.</p>
+                </div>
+            </div>
+            <!-- Portfolio Item 3 -->
+            <div class="rounded-xl overflow-hidden shadow-lg transform transition-transform duration-300 hover:scale-105 card-metallic">
+                <img src="https://placehold.co/600x400/1f2937/d1d5db?text=Project+Gamma" alt="Project Gamma" class="w-full h-48 object-cover">
+                <div class="p-6">
+                    <h3 class="font-semibold text-lg mb-1 text-white">Architectural Railing</h3>
+                    <p class="text-gray-400 text-sm">Elegant and durable stainless steel railing design.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Contact Section -->
+<section id="contact" class="py-16 md:py-24 bg-[#1a1a1a]">
+    <div class="container mx-auto text-center px-4">
+        <h2 class="text-3xl md:text-4xl font-bold mb-4 uppercase">Get in Touch</h2>
+        <p class="text-lg mb-8 max-w-2xl mx-auto text-gray-400">
+            Ready to start your project? Fill out the form below and we'll get back to you.
+        </p>
+        <form action="#" method="POST" class="max-w-xl mx-auto space-y-4">
+            <input type="text" placeholder="Your Name" class="w-full p-3 rounded-md bg-[#262626] text-gray-200 border border-[#3d3d3d] focus:outline-none focus:ring-2 focus:ring-orange-500" required>
+            <input type="email" placeholder="Your Email" class="w-full p-3 rounded-md bg-[#262626] text-gray-200 border border-[#3d3d3d] focus:outline-none focus:ring-2 focus:ring-orange-500" required>
+            <textarea placeholder="Your Message" rows="4" class="w-full p-3 rounded-md bg-[#262626] text-gray-200 border border-[#3d3d3d] focus:outline-none focus:ring-2 focus:ring-orange-500" required></textarea>
+            <button type="submit" class="btn-industrial py-3 px-8 rounded-full font-bold transition-all duration-300">
+                Send Message
+            </button>
+        </form>
+    </div>
+</section>
+
+<!-- Footer -->
+<footer class="bg-[#121212] text-gray-500 py-8 text-center">
+    <div class="container mx-auto">
+        <p>&copy; 2024 Forge Fire LLC. All rights reserved.</p>
+    </div>
+</footer>
+
+</body>
+</html>
