@@ -26,8 +26,9 @@
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.4);
         }
 
-        .shadow-orange {
-            box-shadow: 0 0 10px rgba(255, 69, 0, 0.5);
+        /* More pronounced glow on hover */
+        .shadow-orange-hover:hover {
+            box-shadow: 0 0 20px rgba(255, 69, 0, 0.8), 0 0 10px rgba(255, 69, 0, 0.6);
         }
 
         .btn-industrial {
@@ -41,6 +42,25 @@
             background-color: #ff6347;
             box-shadow: 0 0 15px rgba(255, 69, 0, 0.8);
             transform: translateY(-2px);
+        }
+
+        /* Animated background for the hero section */
+        .hero-bg {
+            background: linear-gradient(45deg, #121212, #1a1a1a, #121212);
+            background-size: 400% 400%;
+            animation: moveGradient 15s ease infinite;
+        }
+
+        @keyframes moveGradient {
+            0% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+            100% {
+                background-position: 0% 50%;
+            }
         }
     </style>
 </head>
@@ -59,7 +79,7 @@
     </header>
 
     <!-- Hero Section -->
-    <section class="bg-[#121212] text-white text-center py-24 md:py-48">
+    <section class="hero-bg text-white text-center py-24 md:py-48">
         <div class="container mx-auto">
             <h1 class="text-4xl md:text-6xl font-extrabold mb-4 uppercase">Precision Metal Fabrication</h1>
             <p class="text-lg md:text-xl max-w-2xl mx-auto mb-8 text-gray-400">
@@ -77,7 +97,7 @@
             <h2 class="text-3xl md:text-4xl font-bold mb-12 uppercase">Our Capabilities</h2>
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8 px-4">
                 <!-- Service Card 1: CNC Machining -->
-                <div class="card-metallic p-8 rounded-xl shadow-lg hover:shadow-orange transition-all duration-300">
+                <div class="card-metallic p-8 rounded-xl shadow-lg shadow-orange-hover transition-all duration-300">
                     <div class="text-4xl text-orange-500 mb-4">
                         <i class="fa-solid fa-gear"></i>
                     </div>
@@ -87,9 +107,9 @@
                     </p>
                 </div>
                 <!-- Service Card 2: Welding & Assembly -->
-                <div class="card-metallic p-8 rounded-xl shadow-lg hover:shadow-orange transition-all duration-300">
+                <div class="card-metallic p-8 rounded-xl shadow-lg shadow-orange-hover transition-all duration-300">
                     <div class="text-4xl text-orange-500 mb-4">
-                        <i class="fa-solid fa-welding-rod"></i>
+                        <i class="fa-solid fa-fire-burner"></i>
                     </div>
                     <h3 class="text-xl font-semibold mb-2 text-white">Welding & Assembly</h3>
                     <p class="text-gray-400">
@@ -97,7 +117,7 @@
                     </p>
                 </div>
                 <!-- Service Card 3: Custom Design -->
-                <div class="card-metallic p-8 rounded-xl shadow-lg hover:shadow-orange transition-all duration-300">
+                <div class="card-metallic p-8 rounded-xl shadow-lg shadow-orange-hover transition-all duration-300">
                     <div class="text-4xl text-orange-500 mb-4">
                         <i class="fa-solid fa-ruler-combined"></i>
                     </div>
@@ -116,7 +136,7 @@
             <h2 class="text-3xl md:text-4xl font-bold mb-12 uppercase">Our Work</h2>
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 px-4">
                 <!-- Portfolio Item 1 -->
-                <div class="rounded-xl overflow-hidden shadow-lg transform transition-transform duration-300 hover:scale-105 card-metallic">
+                <div class="rounded-xl overflow-hidden shadow-lg transform transition-transform duration-300 hover:scale-105 card-metallic shadow-orange-hover">
                     <img src="https://placehold.co/600x400/1f2937/d1d5db?text=Project+Alpha" alt="Project Alpha" class="w-full h-48 object-cover">
                     <div class="p-6">
                         <h3 class="font-semibold text-lg mb-1 text-white">Structural Beams</h3>
@@ -124,7 +144,7 @@
                     </div>
                 </div>
                 <!-- Portfolio Item 2 -->
-                <div class="rounded-xl overflow-hidden shadow-lg transform transition-transform duration-300 hover:scale-105 card-metallic">
+                <div class="rounded-xl overflow-hidden shadow-lg transform transition-transform duration-300 hover:scale-105 card-metallic shadow-orange-hover">
                     <img src="https://placehold.co/600x400/1f2937/d1d5db?text=Project+Beta" alt="Project Beta" class="w-full h-48 object-cover">
                     <div class="p-6">
                         <h3 class="font-semibold text-lg mb-1 text-white">Custom Chassis</h3>
@@ -132,7 +152,7 @@
                     </div>
                 </div>
                 <!-- Portfolio Item 3 -->
-                <div class="rounded-xl overflow-hidden shadow-lg transform transition-transform duration-300 hover:scale-105 card-metallic">
+                <div class="rounded-xl overflow-hidden shadow-lg transform transition-transform duration-300 hover:scale-105 card-metallic shadow-orange-hover">
                     <img src="https://placehold.co/600x400/1f2937/d1d5db?text=Project+Gamma" alt="Project Gamma" class="w-full h-48 object-cover">
                     <div class="p-6">
                         <h3 class="font-semibold text-lg mb-1 text-white">Architectural Railing</h3>
@@ -147,13 +167,18 @@
     <section id="contact" class="py-16 md:py-24 bg-[#1a1a1a]">
         <div class="container mx-auto text-center px-4">
             <h2 class="text-3xl md:text-4xl font-bold mb-4 uppercase">Get in Touch</h2>
-            <p class="text-lg mb-8 max-w-2xl mx-auto text-gray-400">
+            <p class="text-lg mb-4 max-w-2xl mx-auto text-gray-400">
                 Ready to start your project? Fill out the form below and we'll get back to you.
             </p>
-            <form action="#" method="POST" class="max-w-xl mx-auto space-y-4">
-                <input type="text" placeholder="Your Name" class="w-full p-3 rounded-md bg-[#262626] text-gray-200 border border-[#3d3d3d] focus:outline-none focus:ring-2 focus:ring-orange-500" required>
-                <input type="email" placeholder="Your Email" class="w-full p-3 rounded-md bg-[#262626] text-gray-200 border border-[#3d3d3d] focus:outline-none focus:ring-2 focus:ring-orange-500" required>
-                <textarea placeholder="Your Message" rows="4" class="w-full p-3 rounded-md bg-[#262626] text-gray-200 border border-[#3d3d3d] focus:outline-none focus:ring-2 focus:ring-orange-500" required></textarea>
+            <div class="mb-8 max-w-2xl mx-auto space-y-2">
+                <p class="text-base md:text-lg"><i class="fa-solid fa-phone mr-2 text-orange-500"></i> **Weekday Contact:** <a href="tel:2104228366" class="hover:underline text-gray-400">210-422-8366</a></p>
+                <p class="text-base md:text-lg"><i class="fa-solid fa-phone mr-2 text-orange-500"></i> **Alternate Contact:** <a href="tel:2103788053" class="hover:underline text-gray-400">210-378-8053</a></p>
+                <p class="text-base md:text-lg"><i class="fa-solid fa-envelope mr-2 text-orange-500"></i> <a href="mailto:forgefire@forgefirellc.com" class="hover:underline text-gray-400">forgefire@forgefirellc.com</a></p>
+            </div>
+            <form id="contactForm" onsubmit="sendEmail(event)" class="max-w-xl mx-auto space-y-4">
+                <input type="text" id="name" placeholder="Your Name" class="w-full p-3 rounded-md bg-[#262626] text-gray-200 border border-[#3d3d3d] focus:outline-none focus:ring-2 focus:ring-orange-500" required>
+                <input type="email" id="email" placeholder="Your Email" class="w-full p-3 rounded-md bg-[#262626] text-gray-200 border border-[#3d3d3d] focus:outline-none focus:ring-2 focus:ring-orange-500" required>
+                <textarea id="message" placeholder="Your Message" rows="4" class="w-full p-3 rounded-md bg-[#262626] text-gray-200 border border-[#3d3d3d] focus:outline-none focus:ring-2 focus:ring-orange-500" required></textarea>
                 <button type="submit" class="btn-industrial py-3 px-8 rounded-full font-bold transition-all duration-300">
                     Send Message
                 </button>
@@ -168,7 +193,30 @@
         </div>
     </footer>
 
+    <!-- JavaScript for form submission -->
+    <script>
+        function sendEmail(event) {
+            // Prevent the default form submission to handle it with JavaScript
+            event.preventDefault();
+
+            // Get the values from the input fields
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const message = document.getElementById('message').value;
+
+            // Define the recipient email and subject
+            const recipient = 'forgefire@forgefirellc.com';
+            const subject = 'Quote Request from Website';
+            
+            // Construct the email body with the user's information
+            const body = `Name: ${name}\nEmail: ${email}\n\nMessage:\n${message}`;
+
+            // Create the mailto link with encoded subject and body
+            const mailtoLink = `mailto:${recipient}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+
+            // Open the user's default email client
+            window.location.href = mailtoLink;
+        }
+    </script>
 </body>
 </html>
-
-
