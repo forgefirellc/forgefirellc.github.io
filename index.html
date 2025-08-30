@@ -44,23 +44,30 @@
             transform: translateY(-2px);
         }
 
-        /* Animated background for the hero section */
-        .hero-bg {
-            background: linear-gradient(45deg, #121212, #1a1a1a, #121212);
-            background-size: 400% 400%;
-            animation: moveGradient 15s ease infinite;
+        /* Slideshow container styles */
+        .slideshow-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            overflow: hidden;
         }
 
-        @keyframes moveGradient {
-            0% {
-                background-position: 0% 50%;
-            }
-            50% {
-                background-position: 100% 50%;
-            }
-            100% {
-                background-position: 0% 50%;
-            }
+        .slideshow-image {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0;
+            transition: opacity 1.5s ease-in-out;
+        }
+
+        .slideshow-image.active {
+            opacity: 1;
         }
     </style>
 </head>
@@ -78,9 +85,15 @@
     </header>
 
     <!-- Hero Section -->
-    <section class="hero-bg text-white text-center py-24 md:py-48">
-        <div class="container mx-auto">
-            <h1 class="text-4xl md:text-6xl font-extrabold mb-4 uppercase">Precision Metal Fabrication</h1>
+    <section class="relative text-white text-center py-24 md:py-48 flex items-center justify-center">
+        <!-- Image slideshow background -->
+        <div class="slideshow-container">
+            <img src="plasma-cutting.jpg" alt="Plasma cutting a metal sheet." class="slideshow-image active">
+            <img src="plasma.jpg" alt="Close up shot of the plasma torch." class="slideshow-image">
+            <img src="precise-plasma-impresses-1521212978.jpg" alt="A detailed plasma cutting pattern." class="slideshow-image">
+        </div>
+        <div class="relative container mx-auto z-10">
+            <h1 class="text-4xl md:text-6xl font-extrabold mb-4 uppercase drop-shadow-lg">Precision Metal Fabrication</h1>
             <p class="text-lg md:text-xl max-w-2xl mx-auto mb-8 text-gray-400">
                 Innovating with steel, aluminum, and beyond. We build the future with fire and precision.
             </p>
@@ -183,30 +196,44 @@
         </div>
     </footer>
 
-    <!-- JavaScript for form submission -->
+    <!-- JavaScript for form submission and image slideshow -->
     <script>
+        // Function to handle email sending
         function sendEmail(event) {
-            // Prevent the default form submission to handle it with JavaScript
             event.preventDefault();
 
-            // Get the values from the input fields
             const name = document.getElementById('name').value;
             const email = document.getElementById('email').value;
             const message = document.getElementById('message').value;
 
-            // Define the recipient email and subject
             const recipient = 'forgefire@forgefirellc.com';
             const subject = 'Quote Request from Website';
-            
-            // Construct the email body with the user's information
             const body = `Name: ${name}\nEmail: ${email}\n\nMessage:\n${message}`;
 
-            // Create the mailto link with encoded subject and body
             const mailtoLink = `mailto:${recipient}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-
-            // Open the user's default email client
             window.location.href = mailtoLink;
         }
+
+        // Image slideshow functionality
+        let slideIndex = 0;
+        const slides = document.querySelectorAll('.slideshow-image');
+
+        function showSlides() {
+            for (let i = 0; i < slides.length; i++) {
+                slides[i].classList.remove('active');
+            }
+            slideIndex++;
+            if (slideIndex > slides.length) {
+                slideIndex = 1;
+            }
+            slides[slideIndex - 1].classList.add('active');
+            setTimeout(showSlides, 3000); // Change image every 3 seconds
+        }
+
+        // Start the slideshow when the window loads
+        window.onload = function() {
+            showSlides();
+        };
     </script>
 </body>
 </html>
