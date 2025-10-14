@@ -6,45 +6,76 @@
     <title>Forge Fire LLC</title>
     <!-- Use Tailwind CSS for a modern, responsive design -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Use Roboto Slab for a bold, industrial look -->
+    <!-- Use Inter for general text and Roboto Slab for strong headlines -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@400;500;700&display=swap" rel="stylesheet">
-    <!-- Font Awesome for icons -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Roboto+Slab:wght=700&display=swap" rel="stylesheet">
+    <!-- Font Awesome for icons (Correct CDN link) -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <style>
+        /* Define the new light/tan palette and keeping the orange accent */
+        :root {
+            --color-primary: #FF6B00;    /* Rich Orange/Amber from logo */
+            --color-light-bg: #E5D5C1;   /* Parchment/Tan from logo contrast */
+            --color-dark-text: #1c1c1c;  /* Dark charcoal for readability */
+            --color-card-bg: #FFFFFF;    /* White for clean cards and forms */
+            --color-border-light: #d4c0ab; /* Muted border for tan background */
+        }
+
         body {
-            font-family: 'Roboto Slab', serif;
-            background-color: #121212;
-            color: #d1d5db;
+            font-family: 'Inter', sans-serif;
+            background-color: var(--color-light-bg);
+            color: var(--color-dark-text); 
         }
 
-        /* Custom styles for the metallic theme */
+        /* Custom styles for the metallic/industrial theme on a light background */
         .card-metallic {
-            background-color: #262626;
-            border: 1px solid #3d3d3d;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.4);
+            background-color: var(--color-card-bg);
+            border: 1px solid var(--color-border-light);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
         }
 
-        /* More pronounced glow on hover */
-        .shadow-orange-hover:hover {
-            box-shadow: 0 0 20px rgba(255, 69, 0, 0.8), 0 0 10px rgba(255, 69, 0, 0.6);
+        /* Stronger glow on hover using the primary color */
+        .shadow-primary-hover:hover {
+            box-shadow: 0 0 15px rgba(255, 107, 0, 0.7);
+            transform: translateY(-3px);
         }
 
         .btn-industrial {
-            background-color: #ff4500;
-            color: #121212;
-            border: 2px solid #ff6347;
+            background-color: var(--color-primary);
+            color: var(--color-card-bg); /* White text on orange button */
+            border: 2px solid var(--color-primary);
+            font-family: 'Roboto Slab', serif;
+            font-weight: 700;
             text-transform: uppercase;
         }
 
         .btn-industrial:hover {
-            background-color: #ff6347;
-            box-shadow: 0 0 15px rgba(255, 69, 0, 0.8);
+            background-color: #ff8533; /* Slightly lighter on hover */
+            box-shadow: 0 0 15px rgba(255, 107, 0, 0.9);
             transform: translateY(-2px);
         }
+        
+        /* Headline styling */
+        h1, h2, h3 {
+            font-family: 'Roboto Slab', serif;
+        }
 
-        /* Slideshow container styles */
+        /* Input field styling for light background */
+        .input-field {
+            background-color: #f7f7f7;
+            color: var(--color-dark-text);
+            border: 1px solid #ccc;
+        }
+        .input-field:focus {
+            outline: none;
+            ring: 2px;
+            ring-color: var(--color-primary);
+            border-color: var(--color-primary);
+        }
+
+
+        /* Slideshow container styles (Kept dark for the hero images) */
         .slideshow-container {
             position: absolute;
             top: 0;
@@ -69,22 +100,39 @@
         .slideshow-image.active {
             opacity: 1;
         }
+
+        /* Canvas style for the design preview */
+        #designCanvas {
+            border: 2px solid var(--color-primary);
+            background-color: var(--color-dark-text); /* Keep canvas dark for contrast */
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            cursor: default;
+        }
     </style>
 </head>
-<body class="bg-gray-950 text-gray-300">
+<body class="bg-[--color-light-bg] text-[--color-dark-text]">
 
     <!-- Header & Navigation -->
-    <header class="bg-[#1a1a1a] shadow-lg sticky top-0 z-50">
+    <header class="bg-white shadow-lg sticky top-0 z-50 border-b border-[--color-border-light]">
         <nav class="container mx-auto flex justify-between items-center p-4">
-            <a href="#" class="text-2xl font-bold text-white tracking-wide">FORGE FIRE LLC</a>
-            <div class="space-x-4">
-                <a href="#services" class="hover:text-orange-500 transition-colors">Capabilities</a>
-                <a href="#contact" class="hover:text-orange-500 transition-colors">Contact</a>
+            <a href="#" class="flex items-center text-2xl font-bold text-[--color-dark-text] tracking-wide">
+                <!-- LOGO IMAGE (Fallback removed - if logo fails, the space will be empty) -->
+                <img src="EA540E86-FE2A-4D52-AFD1-7AF56B53BF7B.jpg" 
+                     alt="Forge Fire LLC Logo" 
+                     class="w-10 h-10 object-contain rounded-full mr-3 border border-[--color-primary]">
+                FORGE FIRE LLC
+            </a>
+            <div class="space-x-6 hidden sm:block">
+                <a href="#services" class="hover:text-[--color-primary] transition-colors font-medium">Capabilities</a>
+                <a href="#quote-tool" class="hover:text-[--color-primary] transition-colors font-medium">Design & Quote</a>
+                <a href="#contact" class="hover:text-[--color-primary] transition-colors font-medium">Contact</a>
             </div>
         </nav>
     </header>
 
-    <!-- Hero Section -->
+    <!-- Hero Section (Kept Dark for Impact) -->
     <section class="relative text-white text-center py-24 md:py-48 flex items-center justify-center">
         <!-- Image slideshow background -->
         <div class="slideshow-container">
@@ -92,97 +140,224 @@
             <img src="plasma.jpg" alt="Close up shot of the plasma torch." class="slideshow-image">
             <img src="precise-plasma-impresses-1521212978.jpg" alt="A detailed plasma cutting pattern." class="slideshow-image">
         </div>
-        <div class="relative container mx-auto z-10">
-            <h1 class="text-4xl md:text-6xl font-extrabold mb-4 uppercase drop-shadow-lg">Precision Metal Fabrication</h1>
-            <p class="text-lg md:text-xl max-w-2xl mx-auto mb-8 text-white">
-                Innovating with steel, aluminum, and beyond. We build the future with fire and precision.
+        <!-- Overlay to ensure text readability -->
+        <div class="slideshow-container bg-black/70 z-0"></div>
+
+        <div class="relative container mx-auto z-10 p-4">
+            <h1 class="text-5xl md:text-7xl font-extrabold mb-4 uppercase drop-shadow-xl text-white">
+                Precision Metal Fabrication
+            </h1>
+            <p class="text-lg md:text-xl max-w-3xl mx-auto mb-10 text-gray-300 drop-shadow-lg">
+                Innovating with steel, aluminum, and beyond. We build the future with fire and **precision**.
             </p>
-            <a href="#contact" class="btn-industrial py-3 px-8 rounded-full font-bold transition-all duration-300">
-                Get a Quote
+            <a href="#quote-tool" class="btn-industrial py-4 px-12 rounded-full transition-all duration-300 text-lg shadow-2xl shadow-black/50">
+                Start Design & Get Quote
             </a>
         </div>
     </section>
 
-    <!-- Services Section -->
-    <section id="services" class="py-16 md:py-24 bg-[#1a1a1a]">
+    <!-- Capabilities Section (Light Tan Background) -->
+    <section id="services" class="py-16 md:py-24 bg-[--color-light-bg] border-t border-[--color-border-light]">
         <div class="container mx-auto text-center">
-            <h2 class="text-3xl md:text-4xl font-bold mb-12 uppercase">Our Capabilities</h2>
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 px-4">
+            <h2 class="text-3xl md:text-4xl font-bold mb-12 uppercase text-[--color-primary]">Our Capabilities</h2>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 px-4">
                 <!-- Service Card 1: CNC Machining -->
-                <div class="card-metallic p-8 rounded-xl shadow-lg shadow-orange-hover transition-all duration-300">
-                    <div class="text-4xl text-orange-500 mb-4">
+                <div class="card-metallic p-8 rounded-xl shadow-lg shadow-primary-hover transition-all duration-500 hover:border-[--color-primary]">
+                    <div class="text-5xl text-[--color-primary] mb-4">
                         <i class="fa-solid fa-gear"></i>
                     </div>
-                    <h3 class="text-xl font-semibold mb-2 text-white">CNC Machining</h3>
-                    <p class="text-gray-400">
-                        High-precision cutting and shaping of metal for complex components.
+                    <h3 class="text-xl font-semibold mb-2 text-[--color-dark-text]">CNC Machining</h3>
+                    <p class="text-gray-600">
+                        High-precision cutting and shaping of metal for complex components using advanced CNC technology.
                     </p>
                 </div>
                 <!-- Service Card 2: Welding & Assembly -->
-                <div class="card-metallic p-8 rounded-xl shadow-lg shadow-orange-hover transition-all duration-300">
-                    <div class="text-4xl text-orange-500 mb-4">
+                <div class="card-metallic p-8 rounded-xl shadow-lg shadow-primary-hover transition-all duration-500 hover:border-[--color-primary]">
+                    <div class="text-5xl text-[--color-primary] mb-4">
                         <i class="fa-solid fa-fire-burner"></i>
                     </div>
-                    <h3 class="text-xl font-semibold mb-2 text-white">Welding & Assembly</h3>
-                    <p class="text-gray-400">
-                        Expert joining of materials to build robust and reliable structures.
+                    <h3 class="text-xl font-semibold mb-2 text-[--color-dark-text]">Welding & Assembly</h3>
+                    <p class="text-gray-600">
+                        Expert joining of steel, aluminum, and stainless materials to build robust and reliable structures.
                     </p>
                 </div>
                 <!-- Service Card 3: Custom Design -->
-                <div class="card-metallic p-8 rounded-xl shadow-lg shadow-orange-hover transition-all duration-300">
-                    <div class="text-4xl text-orange-500 mb-4">
+                <div class="card-metallic p-8 rounded-xl shadow-lg shadow-primary-hover transition-all duration-500 hover:border-[--color-primary]">
+                    <div class="text-5xl text-[--color-primary] mb-4">
                         <i class="fa-solid fa-ruler-combined"></i>
                     </div>
-                    <h3 class="text-xl font-semibold mb-2 text-white">Custom Design</h3>
-                    <p class="text-gray-400">
-                        Bringing your vision to life with tailored design and engineering solutions.
+                    <h3 class="text-xl font-semibold mb-2 text-[--color-dark-text]">Custom Design</h3>
+                    <p class="text-gray-600">
+                        Bringing your vision to life with tailored design and engineering solutions from concept to completion.
                     </p>
                 </div>
                 <!-- Portfolio Item 1: Custom Signage -->
-                <div class="card-metallic p-8 rounded-xl shadow-lg shadow-orange-hover transition-all duration-300">
-                    <div class="text-4xl text-orange-500 mb-4">
+                <div class="card-metallic p-8 rounded-xl shadow-lg shadow-primary-hover transition-all duration-500 hover:border-[--color-primary]">
+                    <div class="text-5xl text-[--color-primary] mb-4">
                         <i class="fa-solid fa-sign-hanging"></i>
                     </div>
-                    <h3 class="font-semibold text-lg mb-2 text-white">Custom Signage</h3>
-                    <p class="text-gray-400">Unique and durable signage for businesses and properties.</p>
+                    <h3 class="font-semibold text-xl mb-2 text-[--color-dark-text]">Architectural Signage</h3>
+                    <p class="text-gray-600">Unique and durable metal signage for commercial and residential properties.</p>
                 </div>
                 <!-- Portfolio Item 2: Custom Fire Pits -->
-                <div class="card-metallic p-8 rounded-xl shadow-lg shadow-orange-hover transition-all duration-300">
-                    <div class="text-4xl text-orange-500 mb-4">
+                <div class="card-metallic p-8 rounded-xl shadow-lg shadow-primary-hover transition-all duration-500 hover:border-[--color-primary]">
+                    <div class="text-5xl text-[--color-primary] mb-4">
                         <i class="fa-solid fa-fire"></i>
                     </div>
-                    <h3 class="font-semibold text-lg mb-2 text-white">Custom Fire Pits</h3>
-                    <p class="text-gray-400">Handcrafted, high-quality fire pits for outdoor spaces.</p>
+                    <h3 class="font-semibold text-xl mb-2 text-[--color-dark-text]">Outdoor Fire Features</h3>
+                    <p class="text-gray-600">Handcrafted, high-quality, custom-designed fire pits and landscape elements.</p>
                 </div>
-                <!-- Portfolio Item 3: Custom Truck Accessories -->
-                <div class="card-metallic p-8 rounded-xl shadow-lg shadow-orange-hover transition-all duration-300">
-                    <div class="text-4xl text-orange-500 mb-4">
+                <!-- Portfolio Item 3: Industrial Components -->
+                <div class="card-metallic p-8 rounded-xl shadow-lg shadow-primary-hover transition-all duration-500 hover:border-[--color-primary]">
+                    <div class="text-5xl text-[--color-primary] mb-4">
                         <i class="fa-solid fa-wrench"></i>
                     </div>
-                    <h3 class="font-semibold text-lg mb-2 text-white">Custom Truck Accessories</h3>
-                    <p class="text-gray-400">Durable and specialized parts for trucks and off-road vehicles.</p>
+                    <h3 class="font-semibold text-xl mb-2 text-[--color-dark-text]">Industrial Parts</h3>
+                    <p class="text-gray-600">Durable and specialized components for manufacturing and heavy equipment.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Contact Section -->
-    <section id="contact" class="py-16 md:py-24 bg-[#1a1a1a]">
+    <!-- Design & Quote Tool Section (Alternate Light Background) -->
+    <section id="quote-tool" class="py-16 md:py-24 bg-white border-t border-b border-[--color-border-light]">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl md:text-4xl font-bold mb-4 uppercase text-center text-[--color-dark-text]">Design & Quote Tool</h2>
+            <p class="text-lg mb-8 max-w-3xl mx-auto text-center text-gray-600">
+                Create a custom shape, define your specifications, and interactively add custom layers.
+            </p>
+
+            <!-- DESIGN AND ESTIMATION DISCLAIMER -->
+            <div class="max-w-4xl mx-auto p-4 mb-8 bg-[#f5f5f5] rounded-xl border border-[--color-primary]/50 shadow-sm">
+                <p class="text-sm font-semibold text-[--color-primary] mb-1">Note on Design and Estimation:</p>
+                <p class="text-sm text-gray-600">
+                    This visual representation is provided as a <strong class="text-[--color-dark-text]">preliminary design mock-up</strong> to establish the fundamental aesthetic direction. It is intended solely to facilitate the calculation of an <strong class="text-[--color-dark-text]">initial project estimate</strong> and is subject to refinement and final engineering specifications.
+                </p>
+            </div>
+            <!-- END DISCLAIMER -->
+
+            <div class="flex flex-col lg:flex-row gap-8 max-w-4xl mx-auto">
+                <!-- Left Column: Inputs -->
+                <div class="lg:w-1/2 p-6 card-metallic rounded-xl">
+                    <h3 class="text-2xl font-semibold mb-4 text-[--color-primary]">1. Base Shape and Material (Max 4' x 8')</h3>
+
+                    <div class="space-y-4">
+                        <!-- Shape Selector -->
+                        <div class="flex items-center space-x-4">
+                            <label class="font-medium text-[--color-dark-text] min-w-[100px]">Select Shape:</label>
+                            <select id="shapeType" onchange="updateDesign()" class="p-3 rounded-md input-field flex-grow focus:ring-2 focus:ring-[--color-primary]">
+                                <option value="rectangle">Rectangle</option>
+                                <option value="circle">Circle</option>
+                                <option value="octagon">Octagon</option>
+                                <option value="star">Star (5-point)</option>
+                                <option value="cross">Cross</option>
+                            </select>
+                        </div>
+
+                        <!-- Dimensions Inputs for Rectangle (Max 48"x96") -->
+                        <div id="rectangleFields" class="space-y-4">
+                            <input type="number" id="rectWidth" oninput="updateDesign()" placeholder="Width (in) - Max 96" value="48" min="1" max="96" class="w-full p-3 rounded-md input-field" required>
+                            <input type="number" id="rectHeight" oninput="updateDesign()" placeholder="Height (in) - Max 48" value="48" min="1" max="48" class="w-full p-3 rounded-md input-field" required>
+                            <p class="text-sm text-gray-500 mt-1">Note: Our largest sheet size is 48" x 96" (4 ft x 8 ft).</p>
+                        </div>
+
+                        <!-- Dimensions Inputs for Other Shapes (Max 48" square boundary) -->
+                        <div id="otherShapeFields" class="space-y-4 hidden">
+                            <input type="number" id="shapeSize" oninput="updateDesign()" placeholder="Size (in) - Max 48" value="48" min="1" max="48" class="w-full p-3 rounded-md input-field" required>
+                            <p class="text-sm text-gray-500 mt-1">Note: Shape will be sized to fit within 48"x48" (Max 48).</p>
+                        </div>
+                        
+                        <!-- Thickness Selector -->
+                        <select id="thickness" onchange="updateDesign()" class="w-full p-3 rounded-md input-field" required>
+                            <option value="0.125">1/8" Plate (.125)</option>
+                            <option value="0.075">14 Gauge (.075)</option>
+                            <option value="0.120">11 Gauge (.120)</option>
+                            <option value="0.135">10 Gauge (.135)</option>
+                            <option value="0.250">1/4" Plate (.250)</option>
+                        </select>
+
+                        <select id="material" onchange="updateDesign()" class="w-full p-3 rounded-md input-field">
+                            <option value="steel">Mild Steel</option>
+                            <option value="stainless">Stainless Steel</option>
+                            <option value="aluminum">Aluminum</option>
+                        </select>
+                    </div>
+
+                    <h3 class="text-2xl font-semibold mt-8 mb-4 text-[--color-primary]">2. Custom Layers (Text & Image)</h3>
+                    
+                    <!-- Text Layer -->
+                    <div class="space-y-4 p-4 border border-gray-300 rounded-lg">
+                        <label class="font-medium text-[--color-dark-text] block mb-2">Add Custom Text (White Color):</label>
+                        <input type="text" id="customText" oninput="updateTextContent()" placeholder="Text to engrave/cut (e.g., FORGE)" value="FORGE" class="w-full p-3 rounded-md input-field">
+                        
+                        <p class="text-xs text-gray-500 mt-1">Drag, rotate, and resize the text directly on the preview!</p>
+                        <div class="text-sm text-gray-500 mt-2">
+                            Text Dims/Rot: <span id="textDimDisplay" class="text-[--color-primary] font-semibold">0 x 0 in, 0°</span>
+                        </div>
+                    </div>
+
+                    <!-- Image Layer (File only, no preview/size input) -->
+                    <div class="space-y-4 p-4 border border-gray-300 rounded-lg mt-4">
+                        <label class="font-medium text-[--color-dark-text] block mb-2">Upload Custom Image/Logo (for attachment):</label>
+                        <input type="file" id="imageUpload" accept="image/*" onchange="updateDesign()" class="w-full p-3 rounded-md input-field">
+                        <p class="text-xs text-[--color-primary] font-semibold">
+                            *IMPORTANT: You must attach this file to the email we generate!
+                        </p>
+                    </div>
+
+                    <!-- SECTION 3: VERBAL VISION -->
+                    <h3 class="text-2xl font-semibold mt-8 mb-4 text-[--color-primary]">3. Project Vision (Verbal Description)</h3>
+                    <div class="space-y-4 p-4 border border-gray-300 rounded-lg">
+                        <label for="verbalVision" class="font-medium text-[--color-dark-text] block mb-2">Describe Your Desired Vision, Intent, or Function:</label>
+                        <textarea id="verbalVision" placeholder="Describe the intended function, required finish (e.g., brushed, powder-coated), environment of use (e.g., exterior/marine), any special features or details not captured in the design mock-up, and specify any custom shapes needed that are not listed in the 'Select Shape' menu." rows="5" class="w-full p-3 rounded-md input-field"></textarea>
+                        <p class="text-xs text-gray-500 mt-1">This context helps us provide the most accurate engineering and material recommendations.</p>
+                    </div>
+                    <!-- END SECTION 3 -->
+
+
+                    <h3 class="text-2xl font-semibold mt-8 mb-4 text-[--color-primary]">4. Contact Information</h3>
+                    <form id="designQuoteForm" onsubmit="sendDesignQuote(event)" class="space-y-4">
+                        <input type="text" id="quoteName" placeholder="Your Name" class="w-full p-3 rounded-md input-field" required>
+                        <input type="email" id="quoteEmail" placeholder="Your Email" class="w-full p-3 rounded-md input-field" required>
+                        <textarea id="quoteMessage" placeholder="Additional Notes (e.g., Quantity, Tolerances, Simple Attachments)" rows="3" class="w-full p-3 rounded-md input-field"></textarea>
+                        
+                        <div class="text-right text-[--color-dark-text] font-medium pt-2">
+                            Estimated Area: <span id="areaDisplay" class="text-[--color-primary]">0 sq. in.</span>
+                        </div>
+
+                        <button type="submit" class="btn-industrial py-3 px-8 rounded-full transition-all duration-300 w-full shadow-lg">
+                            Request Quote
+                        </button>
+                    </form>
+                </div>
+
+                <!-- Right Column: Canvas Preview -->
+                <div class="lg:w-1/2 p-6 card-metallic rounded-xl flex flex-col items-center justify-center">
+                    <h3 class="text-2xl font-semibold mb-4 text-[--color-primary]">Design Preview</h3>
+                    <canvas id="designCanvas" width="300" height="300" class="mx-auto"></canvas>
+                    <p class="text-sm text-gray-500 mt-4">*Drag/Resize/Rotate the text layer on the canvas.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section (Light Tan Background) -->
+    <section id="contact" class="py-16 md:py-24 bg-[--color-light-bg] border-t border-[--color-border-light]">
         <div class="container mx-auto text-center px-4">
-            <h2 class="text-3xl md:text-4xl font-bold mb-4 uppercase">Get in Touch</h2>
-            <p class="text-lg mb-4 max-w-2xl mx-auto text-gray-400">
+            <h2 class="text-3xl md:text-4xl font-bold mb-4 uppercase text-[--color-primary]">Get in Touch</h2>
+            <p class="text-lg mb-4 max-w-2xl mx-auto text-gray-600">
                 Ready to start your project? Fill out the form below and we'll get back to you.
             </p>
             <div class="mb-8 max-w-2xl mx-auto space-y-2">
-                <p class="text-base md:text-lg"><i class="fa-solid fa-phone mr-2 text-orange-500"></i> **Weekday Contact:** <a href="tel:2104228366" class="hover:underline text-gray-400">210-422-8366</a></p>
-                <p class="text-base md:text-lg"><i class="fa-solid fa-phone mr-2 text-orange-500"></i> **Alternate Contact:** <a href="tel:2103788053" class="hover:underline text-gray-400">210-378-8053</a></p>
-                <p class="text-base md:text-lg"><i class="fa-solid fa-envelope mr-2 text-orange-500"></i> <a href="mailto:forgefire@forgefirellc.com" class="hover:underline text-gray-400">forgefire@forgefirellc.com</a></p>
+                <p class="text-base md:text-lg"><i class="fa-solid fa-phone mr-2 text-[--color-primary]"></i> **Weekday Contact:** <a href="tel:2104228366" class="hover:underline text-[--color-dark-text] hover:text-[--color-primary] transition-colors">210-422-8366</a></p>
+                <p class="text-base md:text-lg"><i class="fa-solid fa-phone mr-2 text-[--color-primary]"></i> **Alternate Contact:** <a href="tel:2103788053" class="hover:underline text-[--color-dark-text] hover:text-[--color-primary] transition-colors">210-378-8053</a></p>
+                <p class="text-base md:text-lg"><i class="fa-solid fa-envelope mr-2 text-[--color-primary]"></i> <a href="mailto:forgefire@forgefirellc.com" class="hover:underline text-[--color-dark-text] hover:text-[--color-primary] transition-colors">forgefire@forgefirellc.com</a></p>
             </div>
             <form id="contactForm" onsubmit="sendEmail(event)" class="max-w-xl mx-auto space-y-4">
-                <input type="text" id="name" placeholder="Your Name" class="w-full p-3 rounded-md bg-[#262626] text-gray-200 border border-[#3d3d3d] focus:outline-none focus:ring-2 focus:ring-orange-500" required>
-                <input type="email" id="email" placeholder="Your Email" class="w-full p-3 rounded-md bg-[#262626] text-gray-200 border border-[#3d3d3d] focus:outline-none focus:ring-2 focus:ring-orange-500" required>
-                <textarea id="message" placeholder="Your Message" rows="4" class="w-full p-3 rounded-md bg-[#262626] text-gray-200 border border-[#3d3d3d] focus:outline-none focus:ring-2 focus:ring-orange-500" required></textarea>
-                <button type="submit" class="btn-industrial py-3 px-8 rounded-full font-bold transition-all duration-300">
+                <input type="text" id="name" placeholder="Your Name" class="w-full p-3 rounded-md input-field" required>
+                <input type="email" id="email" placeholder="Your Email" class="w-full p-3 rounded-md input-field" required>
+                <textarea id="message" placeholder="Your Message" rows="4" class="w-full p-3 rounded-md input-field" required></textarea>
+                <button type="submit" class="btn-industrial py-3 px-8 rounded-full transition-all duration-300 shadow-lg">
                     Send Message
                 </button>
             </form>
@@ -190,7 +365,7 @@
     </section>
 
     <!-- Footer -->
-    <footer class="bg-[#121212] text-gray-500 py-8 text-center">
+    <footer class="bg-white text-gray-600 py-8 text-center border-t border-[--color-border-light]">
         <div class="container mx-auto">
             <p>&copy; 2024 Forge Fire LLC. All rights reserved.</p>
         </div>
@@ -198,7 +373,472 @@
 
     <!-- JavaScript for form submission and image slideshow -->
     <script>
-        // Function to handle email sending
+        // Global state for interactive elements
+        let uploadedImage = null; 
+        let currentScale = 1; // Scale factor from inches to canvas pixels
+
+        // State for the draggable/resizable text object
+        const canvasSize = 300;
+        let textState = {
+            content: 'FORGE',
+            x: canvasSize / 2, // Center of canvas
+            y: canvasSize / 2,
+            size: 30, // Canvas Font Size (px)
+            rotation: 0, // Radians
+            color: '#FFFFFF', // Fixed to white as requested (on dark metal preview)
+            selected: true, // Always selected for simplicity
+            width: 0, // Calculated dynamically
+            height: 0, // Calculated dynamically
+        };
+        
+        // Interaction control variables
+        let interaction = {
+            mode: null, // null, 'move', 'resize', 'rotate'
+            handle: null, // 'nw', 'ne', 'se', 'sw' for resize, 'rot' for rotate
+            startX: 0,
+            startY: 0,
+            startRotation: 0,
+            startSize: 0,
+        };
+        
+        const HANDLE_SIZE = 8;
+        const ROTATE_OFFSET = 30; // Distance of the rotation handle from the box
+
+        const canvas = document.getElementById('designCanvas');
+        const ctx = canvas.getContext('2d');
+        
+        // --- Input Updaters ---
+        function updateTextContent() {
+            textState.content = document.getElementById('customText').value.toUpperCase() || '';
+            updateDesign();
+        }
+        
+        // --- Helper: Convert Degrees to Radians ---
+        function degToRad(degrees) {
+            return degrees * (Math.PI / 180);
+        }
+        
+        // --- Helper: Convert Radians to Degrees ---
+        function radToDeg(radians) {
+            return radians * (180 / Math.PI);
+        }
+        
+        // --- Helper: Get Mouse Position relative to Canvas ---
+        function getCanvasMousePos(event) {
+            const rect = canvas.getBoundingClientRect();
+            // Handle both touch and mouse events
+            const clientX = event.touches ? event.touches[0].clientX : event.clientX;
+            const clientY = event.touches ? event.touches[0].clientY : event.clientY;
+
+            return {
+                x: clientX - rect.left,
+                y: clientY - rect.top
+            };
+        }
+
+        // --- DRAWING HELPERS FOR NEW SHAPES ---
+
+        // Function to draw a 5-point star
+        function drawStar(ctx, cx, cy, outerRadius, points, innerRatio) {
+            const innerRadius = outerRadius * innerRatio;
+            let rot = Math.PI / 2 * 3;
+            let x = cx;
+            let y = cy;
+            let step = Math.PI / points;
+
+            ctx.beginPath();
+            ctx.moveTo(cx, cy - outerRadius);
+
+            for (let i = 0; i < points; i++) {
+                x = cx + Math.cos(rot) * outerRadius;
+                y = cy + Math.sin(rot) * outerRadius;
+                ctx.lineTo(x, y);
+                rot += step;
+
+                x = cx + Math.cos(rot) * innerRadius;
+                y = cy + Math.sin(rot) * innerRadius;
+                ctx.lineTo(x, y);
+                rot += step;
+            }
+            ctx.closePath();
+        }
+
+        // Function to draw a regular Octagon
+        function drawOctagon(ctx, cx, cy, radius) {
+            const angle = 2 * Math.PI / 8;
+            ctx.beginPath();
+            for (let i = 0; i < 8; i++) {
+                const x = cx + radius * Math.cos(i * angle);
+                const y = cy + radius * Math.sin(i * angle);
+                if (i === 0) {
+                    ctx.moveTo(x, y);
+                } else {
+                    ctx.lineTo(x, y);
+                }
+            }
+            ctx.closePath();
+        }
+
+        // Function to draw a Cross shape (Latin Cross/Jesus Cross - bar is higher up)
+        function drawCross(ctx, cx, cy, size) {
+            const armWidth = size / 4; // Width of the cross arms
+            const armLength = size / 2; // Length of each arm from center (total height is 2*armLength = size)
+            const halfArmWidth = armWidth / 2;
+            
+            // New: Position the horizontal bar higher up (0.25 * size above the center of the bounding box)
+            const barCenterY = cy - (size / 4); 
+
+            ctx.beginPath();
+            
+            // 1. Start at top-center of vertical arm
+            ctx.moveTo(cx - halfArmWidth, cy - armLength);
+            // Top-right corner of top vertical segment
+            ctx.lineTo(cx + halfArmWidth, cy - armLength);
+            // Right edge of top vertical segment down to horizontal bar top
+            ctx.lineTo(cx + halfArmWidth, barCenterY - halfArmWidth); 
+            
+            // 2. Draw Right Horizontal Arm (Top Edge)
+            ctx.lineTo(cx + armLength, barCenterY - halfArmWidth); 
+            // Draw Right Horizontal Arm (Bottom Edge)
+            ctx.lineTo(cx + armLength, barCenterY + halfArmWidth); 
+            // Left edge of right horizontal arm back to vertical bar bottom
+            ctx.lineTo(cx + halfArmWidth, barCenterY + halfArmWidth); 
+            
+            // 3. Draw Bottom Vertical Segment
+            // Right edge of bottom vertical segment down to the bottom
+            ctx.lineTo(cx + halfArmWidth, cy + armLength); 
+            // Bottom edge of vertical segment
+            ctx.lineTo(cx - halfArmWidth, cy + armLength); 
+            
+            // 4. Draw Left Vertical Segment up to horizontal bar bottom
+            ctx.lineTo(cx - armLength, barCenterY + halfArmWidth); 
+            // Draw Left Horizontal Arm (Top Edge)
+            ctx.lineTo(cx - armLength, barCenterY - halfArmWidth); 
+            
+            // 6. Draw Left Vertical Segment up to horizontal bar top
+            ctx.lineTo(cx - halfArmWidth, barCenterY - halfArmWidth); 
+            
+            ctx.closePath();
+        }
+
+        // --- CORE DESIGN LOGIC ---
+
+        function updateDesign() {
+            const shapeType = document.getElementById('shapeType').value;
+            const rectFields = document.getElementById('rectangleFields');
+            const otherShapeFields = document.getElementById('otherShapeFields');
+            const areaDisplay = document.getElementById('areaDisplay');
+            const textDimDisplay = document.getElementById('textDimDisplay');
+
+            const maxSheetX = 96; // 8 feet = 96 inches
+            const maxSheetY = 48; // 4 feet = 48 inches
+
+            let width, height, radius, area;
+            let maxInputDim = 0; // The largest dimension the user entered
+            let shapeSizeInputVal = parseFloat(document.getElementById('shapeSize').value) || 0;
+
+            // 1. Calculate Base Shape Dimensions and Area
+            // Toggle visibility for shape dimension inputs
+            if (shapeType === 'rectangle') {
+                rectFields.classList.remove('hidden');
+                otherShapeFields.classList.add('hidden');
+                
+                width = Math.min(parseFloat(document.getElementById('rectWidth').value) || 0, maxSheetX);
+                height = Math.min(parseFloat(document.getElementById('rectHeight').value) || 0, maxSheetY);
+                
+                area = width * height;
+                maxInputDim = Math.max(width, height);
+            } else { // All other shapes will use a single 'shapeSize' input for simplicity
+                rectFields.classList.add('hidden');
+                otherShapeFields.classList.remove('hidden');
+
+                // For non-rectangular shapes, 'shapeSize' acts as a bounding box side, max 48"
+                let currentShapeSize = Math.min(shapeSizeInputVal, maxSheetY); 
+                document.getElementById('shapeSize').value = currentShapeSize; // Enforce max
+                
+                // For area and scaling, we'll treat them as fitting within a square of this size
+                width = currentShapeSize; 
+                height = currentShapeSize; 
+                maxInputDim = currentShapeSize;
+
+                // Approximate area for complex shapes for now (bounding box area)
+                if (shapeType === 'circle') {
+                    radius = currentShapeSize / 2;
+                    area = Math.PI * radius * radius;
+                } else if (shapeType === 'octagon') {
+                    // Area of a regular octagon (2 * (1 + sqrt(2)) * side^2). Approx area of bounding box.
+                    area = width * height * 0.828; // Heuristic factor
+                } else {
+                    area = width * height * 0.7; // General approximation for other complex shapes
+                }
+            }
+            
+            // Enforce limits on inputs (if user types too high)
+            if (shapeType === 'rectangle') {
+                document.getElementById('rectWidth').value = width;
+                document.getElementById('rectHeight').value = height;
+            }
+
+            areaDisplay.textContent = `${area.toFixed(2)} sq. in.`;
+
+
+            // 2. Set Scale and Draw Canvas
+            ctx.clearRect(0, 0, canvasSize, canvasSize);
+            const padding = 20;
+            const maxCanvasDim = canvasSize - (padding * 2);
+
+            // Determine the maximum dimension to fit in the 300x300 canvas
+            let effectiveMaxDim = (shapeType === 'rectangle') ? Math.max(width, height) : maxInputDim;
+            
+            // Calculate scale factor: 1 inch = X pixels
+            currentScale = effectiveMaxDim > 0 ? maxCanvasDim / effectiveMaxDim : 1;
+            
+            let shapeCenterX = canvasSize / 2;
+            let shapeCenterY = canvasSize / 2;
+            let shapeRenderSize = maxInputDim * currentScale; // Size for drawing complex shapes
+
+            // Draw Base Shape
+            ctx.strokeStyle = 'var(--color-primary)';
+            ctx.lineWidth = 4;
+            ctx.fillStyle = '#3d3d3d'; // A mid-dark gray for the metal look
+            
+            ctx.beginPath();
+
+            switch (shapeType) {
+                case 'rectangle':
+                    const scaledWidth = width * currentScale;
+                    const scaledHeight = height * currentScale;
+                    const startX = (canvasSize - scaledWidth) / 2;
+                    const startY = (canvasSize - scaledHeight) / 2;
+                    ctx.fillRect(startX, startY, scaledWidth, scaledHeight);
+                    ctx.strokeRect(startX, startX, scaledWidth, scaledHeight);
+                    break;
+                case 'circle':
+                    const scaledRadius = (maxInputDim / 2) * currentScale;
+                    ctx.arc(shapeCenterX, shapeCenterY, scaledRadius, 0, 2 * Math.PI);
+                    ctx.fill();
+                    ctx.stroke();
+                    break;
+                case 'octagon':
+                    drawOctagon(ctx, shapeCenterX, shapeCenterY, shapeRenderSize / 2);
+                    ctx.fill();
+                    ctx.stroke();
+                    break;
+                case 'star':
+                    drawStar(ctx, shapeCenterX, shapeCenterY, shapeRenderSize / 2, 5, 0.4);
+                    ctx.fill();
+                    ctx.stroke();
+                    break;
+                case 'cross':
+                    // Cross uses about 90% of the bounding box size
+                    drawCross(ctx, shapeCenterX, shapeCenterY, shapeRenderSize * 0.9); 
+                    ctx.fill();
+                    ctx.stroke();
+                    break;
+            }
+            
+            // 3. Draw Custom Layers (Text only - Image drawing logic removed)
+            drawCustomLayers();
+            
+            // 4. Update Text Dimension Display
+            const textWidthIn = (textState.width / currentScale).toFixed(1);
+            const textHeightIn = (textState.height / currentScale).toFixed(1);
+            const textRotDeg = Math.round(radToDeg(textState.rotation));
+            textDimDisplay.textContent = `${textWidthIn} x ${textHeightIn} in, ${textRotDeg} / 360°`;
+        }
+        
+        // --- DRAW CUSTOM LAYERS WITH TRANSFORMATION ---
+
+        function drawCustomLayers() {
+            // Helper to measure text width
+            // Use Roboto Slab for the text cut to match the brand aesthetic
+            ctx.font = `bold ${textState.size}px 'Roboto Slab', serif`; 
+            const metrics = ctx.measureText(textState.content);
+            
+            // Approximate height using font size
+            textState.width = metrics.width;
+            textState.height = textState.size * 1.2; // 1.2 is a rough line-height factor
+
+            // 1. Draw Custom Text
+            ctx.save();
+            ctx.translate(textState.x, textState.y);
+            ctx.rotate(textState.rotation);
+            
+            ctx.fillStyle = textState.color;
+            ctx.textAlign = 'center';
+            ctx.textBaseline = 'middle';
+            
+            // Draw the text (Simulated cut/engraving)
+            ctx.fillText(textState.content, 0, 0);
+            
+            // Draw a temporary visual outline for the cut (simulated)
+            ctx.strokeStyle = 'var(--color-primary)';
+            ctx.lineWidth = 1;
+            ctx.strokeText(textState.content, 0, 0);
+
+            // 2. Draw Text Control Handles (if selected)
+            if (textState.selected) {
+                const w = textState.width / 2;
+                const h = textState.height / 2;
+
+                // Bounding box (always drawn straight relative to rotated object)
+                ctx.beginPath();
+                ctx.rect(-w, -h, textState.width, textState.height);
+                ctx.strokeStyle = 'var(--color-primary)';
+                ctx.setLineDash([4, 2]); // Dashed line
+                ctx.stroke();
+                ctx.setLineDash([]); // Reset line style
+
+                // Resizing handle (circle at bottom right)
+                const resizeHandle = { x: w, y: h, handle: 'se' };
+                
+                ctx.fillStyle = '#00FFFF'; // Cyan handle
+                ctx.beginPath();
+                ctx.arc(resizeHandle.x, resizeHandle.y, HANDLE_SIZE, 0, 2 * Math.PI);
+                ctx.fill();
+                ctx.stroke();
+                
+                // Rotation handle (above center top)
+                const rotY = -h - ROTATE_OFFSET;
+                ctx.beginPath();
+                ctx.fillStyle = '#FF00FF'; // Magenta rotation handle
+                ctx.arc(0, rotY, HANDLE_SIZE, 0, 2 * Math.PI);
+                ctx.fill();
+                ctx.stroke();
+            }
+
+            ctx.restore();
+
+            // Image drawing logic removed as per user request.
+        }
+        
+        // --- INTERACTION LOGIC (Mouse/Touch Handlers) ---
+        
+        function hitTest(x, y) {
+            if (!textState.content) return { mode: null };
+            
+            const w = textState.width / 2;
+            const h = textState.height / 2;
+
+            // Rotation handle position (relative to object center)
+            const rotY = -h - ROTATE_OFFSET;
+            const rotationHandle = { x: 0, y: rotY, handle: 'rot' };
+            
+            // Resize handle position (relative to object center)
+            const resizeHandle = { x: w, y: h, handle: 'se' };
+
+            // Rotate coordinates: Transform mouse position (x, y) back to the object's local, non-rotated space
+            const cos = Math.cos(-textState.rotation);
+            const sin = Math.sin(-textState.rotation);
+            const localX = cos * (x - textState.x) - sin * (y - textState.y);
+            const localY = sin * (x - textState.x) + cos * (y - textState.y);
+            
+            // 1. Check for Handles (Resize and Rotate)
+            // Check distance to resize handle
+            if (Math.hypot(localX - resizeHandle.x, localY - resizeHandle.y) < HANDLE_SIZE + 3) {
+                return { mode: 'resize', handle: resizeHandle.handle };
+            }
+
+            // Check distance to rotation handle
+            if (Math.hypot(localX - rotationHandle.x, localY - rotationHandle.y) < HANDLE_SIZE + 3) {
+                return { mode: 'rotate', handle: rotationHandle.handle };
+            }
+
+
+            // 2. Check for Drag (inside bounding box)
+            if (localX >= -w && localX <= w && localY >= -h && localY <= h) {
+                return { mode: 'move' };
+            }
+            
+            return { mode: null };
+        }
+
+        function mousedown(event) {
+            const pos = getCanvasMousePos(event);
+            const hit = hitTest(pos.x, pos.y);
+
+            if (hit.mode) {
+                event.preventDefault(); // Prevent default browser drag actions
+                interaction.mode = hit.mode;
+                interaction.handle = hit.handle;
+                interaction.startX = pos.x;
+                interaction.startY = pos.y;
+                interaction.startRotation = textState.rotation;
+                interaction.startSize = textState.size;
+            }
+        }
+
+        function mousemove(event) {
+            const pos = getCanvasMousePos(event);
+            const { mode, startX, startY, startRotation, startSize } = interaction;
+            const dx = pos.x - startX;
+            const dy = pos.y - startY;
+
+            if (mode === 'move') {
+                textState.x += dx;
+                textState.y += dy;
+                interaction.startX = pos.x;
+                interaction.startY = pos.y;
+                updateDesign();
+            } else if (mode === 'resize' && interaction.handle === 'se') {
+                // Simplified resize: scale size based on movement from SE handle
+                const scaleFactor = 1 + (dx + dy) / 300; 
+                textState.size = Math.max(10, startSize * scaleFactor); // Minimum font size 10
+                updateDesign();
+            } else if (mode === 'rotate') {
+                // Calculate angle from center of object to mouse position
+                const deltaX = pos.x - textState.x;
+                const deltaY = pos.y - textState.y;
+                
+                // Calculate the angle using atan2
+                // We add 90 degrees offset (Math.PI/2) because our text is drawn vertically centered 
+                // but we want rotation to start relative to the top handle.
+                const newRotation = Math.atan2(deltaY, deltaX) + degToRad(90);
+                
+                textState.rotation = newRotation;
+                updateDesign();
+            } else {
+                 // Update cursor based on hit test for visual feedback
+                const hit = hitTest(pos.x, pos.y);
+                if (hit.mode === 'move') {
+                    canvas.style.cursor = 'move';
+                } else if (hit.mode === 'resize') {
+                    canvas.style.cursor = 'nwse-resize'; 
+                } else if (hit.mode === 'rotate') {
+                    canvas.style.cursor = 'crosshair';
+                } else {
+                    canvas.style.cursor = 'default';
+                }
+            }
+        }
+
+        function mouseup(event) {
+            // Finalize position/rotation/size for the quote
+            if (interaction.mode) {
+                updateDesign(); 
+            }
+            interaction.mode = null;
+            interaction.handle = null;
+        }
+
+        // --- Event Listeners for Interaction ---
+        canvas.addEventListener('mousedown', mousedown);
+        canvas.addEventListener('mousemove', mousemove);
+        canvas.addEventListener('mouseup', mouseup);
+        // Add touch support
+        canvas.addEventListener('touchstart', (e) => mousedown(e.touches[0]));
+        canvas.addEventListener('touchmove', (e) => mousemove(e.touches[0]));
+        canvas.addEventListener('touchend', mouseup);
+
+
+        // --- Image Upload Handler (Simplified - no preview generation) ---
+        function handleImageUpload(event) {
+            // This function is now empty as we only rely on the browser's mailto link 
+            // to attach the file, and we do not draw the image on the canvas.
+            // The file name is retrieved directly in sendDesignQuote.
+        }
+
+        // --- General Contact Form Submission ---
         function sendEmail(event) {
             event.preventDefault();
 
@@ -207,18 +847,95 @@
             const message = document.getElementById('message').value;
 
             const recipient = 'forgefire@forgefirellc.com';
-            const subject = 'Quote Request from Website';
+            const subject = 'General Inquiry from Website';
             const body = `Name: ${name}\nEmail: ${email}\n\nMessage:\n${message}`;
 
             const mailtoLink = `mailto:${recipient}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
             window.location.href = mailtoLink;
         }
 
-        // Image slideshow functionality
+        // 5. Handle Design Quote Submission (Mailto)
+        function sendDesignQuote(event) {
+            event.preventDefault();
+
+            const name = document.getElementById('quoteName').value;
+            const email = document.getElementById('quoteEmail').value;
+            const message = document.getElementById('quoteMessage').value;
+            
+            // Retrieve Verbal Vision
+            const verbalVision = document.getElementById('verbalVision').value;
+
+            const shapeType = document.getElementById('shapeType').value;
+            // Thickness is now retrieved from the select value (decimal inches)
+            const thicknessDecimal = document.getElementById('thickness').value; 
+            const thicknessLabel = document.getElementById('thickness').options[document.getElementById('thickness').selectedIndex].text;
+            
+            const material = document.getElementById('material').value;
+            const area = document.getElementById('areaDisplay').textContent;
+            
+            // Custom Layers Data
+            const textWidthIn = (textState.width / currentScale).toFixed(2);
+            const textHeightIn = (textState.height / currentScale).toFixed(2);
+            const textXIn = ((textState.x - canvasSize/2) / currentScale).toFixed(2); // X position relative to shape center
+            const textYIn = ((textState.y - canvasSize/2) / currentScale).toFixed(2); // Y position relative to shape center
+            const textRotDeg = Math.round(radToDeg(textState.rotation));
+            
+            // Custom Logo File Handling (for email body only)
+            const imageFileInput = document.getElementById('imageUpload');
+            const imageFileName = imageFileInput.files[0] ? imageFileInput.files[0].name : 'No file uploaded.';
+            
+            let dimensions;
+            if (shapeType === 'rectangle') {
+                const width = document.getElementById('rectWidth').value;
+                const height = document.getElementById('rectHeight').value;
+                dimensions = `Width: ${width} in (Max 96), Height: ${height} in (Max 48)`;
+            } else {
+                const size = document.getElementById('shapeSize').value;
+                dimensions = `Bounding Box Size: ${size} x ${size} in (Max 48"x48" boundary)`;
+            }
+
+            const recipient = 'forgefire@forgefirellc.com';
+            const subject = `CUSTOM DESIGN Quote Request - ${shapeType.toUpperCase()}`;
+            
+            let body = `--- Base Specifications ---\nShape: ${shapeType}\nDimensions: ${dimensions}\nThickness: ${thicknessLabel} (${thicknessDecimal} in)\nMaterial: ${material}\nCalculated Area: ${area}\n\n`;
+
+            // Add custom layer details
+            body += `--- Custom Layer Details ---\n`;
+            if (textState.content) {
+                body += `TEXT: "${textState.content}"\n`;
+                body += `  Size (Approx.): ${textWidthIn} x ${textHeightIn} in\n`;
+                body += `  Center Offset (from shape center): X=${textXIn} in, Y=${textYIn} in\n`;
+                body += `  Rotation: ${textRotDeg} degrees\n`;
+            } else {
+                body += `TEXT: None.\n`;
+            }
+            
+            if (imageFileName !== 'No file uploaded.') {
+                body += `IMAGE/LOGO: YES (File Name: ${imageFileName})\n`;
+                body += `*** CRITICAL: The image file (${imageFileName}) MUST be attached to this email for us to process the quote! ***\n`;
+            } else {
+                body += `IMAGE/LOGO: None.\n`;
+            }
+            
+            // Add verbal vision
+            body += `\n--- Project Vision ---\n${verbalVision || 'No verbal description provided.'}\n`;
+
+
+            body += `\n--- Customer Information ---\nName: ${name}\nEmail: ${email}\n\n--- Additional Notes ---\n${message}`;
+
+            // NOTE: The file is attached by the browser when the mailto link is clicked, 
+            // as long as the input field contains a file.
+            const mailtoLink = `mailto:${recipient}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+            window.location.href = mailtoLink;
+        }
+
+        // --- Image Slideshow Functionality ---
         let slideIndex = 0;
         const slides = document.querySelectorAll('.slideshow-image');
 
         function showSlides() {
+            if (slides.length === 0) return;
+            
             for (let i = 0; i < slides.length; i++) {
                 slides[i].classList.remove('active');
             }
@@ -230,9 +947,11 @@
             setTimeout(showSlides, 3000); // Change image every 3 seconds
         }
 
-        // Start the slideshow when the window loads
+        // --- Initialization ---
         window.onload = function() {
-            showSlides();
+            showSlides(); // Start the image slideshow
+            updateTextContent(); // Initialize text content
+            updateDesign(); // Draw initial shape and text
         };
     </script>
 </body>
